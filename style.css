@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,900|Monsieur+La+Doulaise&display=swap');
 *{
   margin: 0;
 	padding: 0;
@@ -140,9 +140,45 @@ article.hc-header-container-text a{
   padding: 10px 20px;
 }
 section.hc-servicios {
-  height: 50vh;
+  width: 75%;
+  height: 100%;
+  max-width: 1200px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 50px auto;
 }
+section.hc-servicios h2 {
+  font-family: 'Monsieur La Doulaise', cursive;
+  font-size:4em;
+  color:rgba(40,38,44,1);
+  width: 100%;
+  margin: 30px 0 50px 0;
+}
+ul.hc-servicios-container-menu{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
+}
+ul.hc-servicios-container-menu li{
+  list-style: none;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  color:rgba(40,38,44,1);
+  padding: 30px 0;
+  cursor: pointer;
+}
+ul.hc-servicios-container-menu li:hover{
+  font-style: italic;
+}
+ul.hc-servicios-container-menu li.selected{
+  border-bottom: 3px solid rgb(185, 152, 72);
+}
 footer.hc-footer {
   height: 100px;
   width: 100%;
