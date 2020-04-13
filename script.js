@@ -16,18 +16,22 @@ const main = () => {
       switch (galleryName) {
         case "hc-servicios-relojes":
           selectors.relojesGallery.classList.toggle('selected');
+          selectors.relojesGallery.classList.toggle('animation-start-app');
           break;
       case "hc-servicios-restauraciones":
           selectors.restauracionesGallery.classList.toggle('selected');
+          selectors.restauracionesGallery.classList.toggle('animation-start-app');
           break;
         default:
           selectors.relojesGallery.classList.toggle('selected');
+          selectors.relojesGallery.classList.toggle('animation-start-app');
           break;
       }
     }
     this.classReset = (selectorsList) => {
       [...selectorsList].forEach((item) => {
         item.classList.remove('selected')
+        item.classList.remove('animation-start-app')
       });
     }
   }
@@ -42,9 +46,9 @@ const main = () => {
       e.preventDefault();
       let move = window.pageYOffset;
       const interval = setInterval(() => {
-        move += 10
+        move >= (selectors.serviciosContainer.offsetTop - 200) ? move += 1 : move += 5        
         window.scrollTo(0, move);
-        move >= selectors.serviciosContainer.offsetTop && clearInterval(interval)
+        move >= (selectors.serviciosContainer.offsetTop - 80) && clearInterval(interval)
       },5);
     }
   }
