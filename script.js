@@ -7,14 +7,10 @@ const main = () => {
     this.galleryList = this.page.querySelectorAll('.hc-servicios-container-gallery');
     this.relojesGallery = this.page.querySelector('.hc-servicios-relojes-gallery');
     this.restauracionesGallery = this.page.querySelector('.hc-servicios-restauraciones-gallery');
+    this.headerButton = this.page.querySelector('.hc-header-container-text a');
+    this.serviciosContainer = this.page.querySelector('#trabajos');
   }
-  const events = new function() {
-    this.toggleSelectedClass = (listItem) => {
-      this.classReset(selectors.serviciosList);
-      const galleryName = listItem.getAttribute('class');
-      listItem.classList.add('selected');
-      this.toggleGalleryOnSelected(galleryName);
-    }
+  const view = new function () {
     this.toggleGalleryOnSelected = (galleryName) => {
       this.classReset(selectors.galleryList);
       switch (galleryName) {
@@ -35,6 +31,24 @@ const main = () => {
       });
     }
   }
+  const events = new function() {
+    this.toggleSelectedClass = (listItem) => {
+      view.classReset(selectors.serviciosList);
+      const galleryName = listItem.getAttribute('class');
+      listItem.classList.add('selected');
+      view.toggleGalleryOnSelected(galleryName);
+    }
+    this.goTo = (e) => {
+      e.preventDefault();
+      let move = window.pageYOffset;
+      const interval = setInterval(() => {
+        move += 10
+        window.scrollTo(0, move);
+        move >= selectors.serviciosContainer.offsetTop && clearInterval(interval)
+      },5);
+    }
+  }
+  selectors.headerButton.addEventListener('click', events.goTo)
   selectors.serviciosList.forEach((listItem) => {
     listItem.addEventListener('click', function() {
       events.toggleSelectedClass(listItem);

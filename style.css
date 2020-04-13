@@ -10,6 +10,8 @@
   font-family: 'Lato', sans-serif;
   font-weight: 300;
   line-height: 1.3;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+-webkit-tap-highlight-color: transparent;
 }
 body {
   display: flex;
@@ -181,7 +183,7 @@ ul.hc-servicios-container-menu li p{
 }
 
 ul.hc-servicios-container-menu li.selected{
-  box-shadow: 0px 3px 0px 0px rgba(185,152,72,1);
+  box-shadow: 0px 4px 0px -1px rgba(185,152,72,1);
 }
 
 ul.hc-servicios-container-menu li.selected p{
@@ -290,6 +292,9 @@ article.hc-historia-container p:last-child{
   100% { opacity: 1; right:0; }
 }
 @media (max-width: 1200px) {
+  section.hc-servicios, section.hc-historia {
+    width: 90%;
+  }
   .animation-showright {
     position: absolute;
     -webkit-animation: showright 1500ms forwards ease-in-out;
@@ -317,14 +322,27 @@ article.hc-historia-container p:last-child{
   }
   article.hc-historia-container-img {
     width: 100%;
+    height: 33vh;
+    order: 3;
+  }
+  article.hc-historia-container-img:nth-child(2) {
+    order:1;
+  }
+  article.hc-historia-container-img img{
+    position: absolute;
+    height: auto;
+    width: 150%;
   }
   article.hc-historia-container p:first-child{
     width: 100%;
-    padding: 0 3% 3% 3%;
+    padding: 50px 0;
+    order:2;
+
   }
   article.hc-historia-container p:last-child{
     width: 100%;
-    padding: 0 3% 3% 3%;
+    padding: 50px 0;
+    order:4;
   }
   .animation-showright {
     position: absolute;
@@ -336,6 +354,9 @@ article.hc-historia-container p:last-child{
   }
 }
 @media (max-width: 750px) {
+  p {
+    margin: 0;
+  }
   header.hc-header {
     height: 100vh;
   }
@@ -345,10 +366,15 @@ article.hc-historia-container p:last-child{
     display: block;
     margin:0px 10px;
 }
+h2 {
+  font-size:2.8em;
+  text-align: center;
+}
   article.hc-header-container-text h1{
     align-self: center;
     text-align: center;
     font-size: 2.8em;
+    text-align: center;
     white-space: normal;
     width: 100%;
   }
@@ -368,7 +394,7 @@ article.hc-historia-container p:last-child{
   }
   article.hc-header-container-text a{
     align-self: center;
-
+    margin-top: 30px;
   }
   article.hc-header-container-text p {
     text-align: center;
@@ -379,6 +405,15 @@ article.hc-historia-container p:last-child{
     align-self: center;
     width: 100%;
     max-width: 225px;
+  }
+  ul.hc-servicios-container-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  ul.hc-servicios-container-menu li {
+    padding: 20px 0;
   }
   article.hc-servicios-container-gallery-img {
     width: 100%;
