@@ -6,7 +6,10 @@ const main = () => {
     this.serviciosList = this.page.querySelectorAll('.hc-servicios-container-menu li');
     this.galleryList = this.page.querySelectorAll('.hc-servicios-container-gallery');
     this.relojesGallery = this.page.querySelector('.hc-servicios-relojes-gallery');
+    this.reproduccinesGallery = this.page.querySelector('.hc-servicios-reproducciones-gallery');
     this.restauracionesGallery = this.page.querySelector('.hc-servicios-restauraciones-gallery');
+    this.recuperacionesGallery = this.page.querySelector('.hc-servicios-recuperaciones-gallery');
+    this.boulleGallery = this.page.querySelector('.hc-servicios-boulle-gallery');
     this.headerButton = this.page.querySelector('.hc-header-container-text a');
     this.serviciosContainer = this.page.querySelector('#trabajos');
   }
@@ -18,9 +21,21 @@ const main = () => {
           selectors.relojesGallery.classList.toggle('selected');
           selectors.relojesGallery.classList.toggle('animation-start-app');
           break;
-      case "hc-servicios-restauraciones":
+        case "hc-servicios-restauraciones":
           selectors.restauracionesGallery.classList.toggle('selected');
           selectors.restauracionesGallery.classList.toggle('animation-start-app');
+          break;
+        case "hc-servicios-reproducciones":
+          selectors.reproduccinesGallery.classList.toggle('selected');
+          selectors.reproduccinesGallery.classList.toggle('animation-start-app');
+          break;
+        case "hc-servicios-recuperaciones":
+          selectors.recuperacionesGallery.classList.toggle('selected');
+          selectors.recuperacionesGallery.classList.toggle('animation-start-app');
+          break;
+        case "hc-servicios-boulle":
+          selectors.boulleGallery.classList.toggle('selected');
+          selectors.boulleGallery.classList.toggle('animation-start-app');
           break;
         default:
           selectors.relojesGallery.classList.toggle('selected');
