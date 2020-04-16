@@ -615,7 +615,7 @@ h2 {
     position: relative;
     margin-top: 50px;
   }
-  article.hc-header-container-text a{
+  article.hc-header-container-text a {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
                 -ms-grid-row-align: center;
@@ -623,6 +623,13 @@ h2 {
     margin-top: 30px;
   }
   article.hc-header-container-text p {
+    text-align: center;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+            align-self: center;
+  }
+  article.hc-header-container-text p.hc-header-container-text-contact, article.hc-header-container-text a.hc-header-container-text-contact{
     text-align: center;
     -webkit-align-self: center;
         -ms-flex-item-align: center;
