@@ -1,19 +1,7 @@
-'use strict';
+'use strict'
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var main = function main() {
-  var selectors = new function () {
+const main = () => {
+  const selectors = new function() {
     this.page = document.querySelector('body');
     this.serviciosList = this.page.querySelectorAll('.hc-servicios-container-menu li');
     this.galleryList = this.page.querySelectorAll('.hc-servicios-container-gallery');
@@ -29,94 +17,83 @@ var main = function main() {
     this.trabajosContainer = this.page.querySelector('#trabajos');
     this.historiaContainer = this.page.querySelector('#historia');
     this.contactoContainer = this.page.querySelector('#contacto');
-  }();
-  var view = new function () {
-    var _this = this;
-
-    this.toggleGalleryOnSelected = function (galleryName) {
-      _this.classReset(selectors.galleryList);
-
+  }
+  const view = new function () {
+    this.toggleGalleryOnSelected = (galleryName) => {
+      this.classReset(selectors.galleryList);
       switch (galleryName) {
         case "hc-servicios-relojes":
           selectors.relojesGallery.classList.toggle('selected');
           selectors.relojesGallery.classList.toggle('animation-start-app');
           break;
-
         case "hc-servicios-restauraciones":
           selectors.restauracionesGallery.classList.toggle('selected');
           selectors.restauracionesGallery.classList.toggle('animation-start-app');
           break;
-
         case "hc-servicios-reproducciones":
           selectors.reproduccinesGallery.classList.toggle('selected');
           selectors.reproduccinesGallery.classList.toggle('animation-start-app');
           break;
-
         case "hc-servicios-recuperaciones":
           selectors.recuperacionesGallery.classList.toggle('selected');
           selectors.recuperacionesGallery.classList.toggle('animation-start-app');
           break;
-
         case "hc-servicios-boulle":
           selectors.boulleGallery.classList.toggle('selected');
           selectors.boulleGallery.classList.toggle('animation-start-app');
           break;
-
         default:
           selectors.relojesGallery.classList.toggle('selected');
           selectors.relojesGallery.classList.toggle('animation-start-app');
           break;
       }
-    };
-
-    this.classReset = function (selectorsList) {
-      _toConsumableArray(selectorsList).forEach(function (item) {
-        item.classList.remove('selected');
-        item.classList.remove('animation-start-app');
+    }
+    this.classReset = (selectorsList) => {
+      [...selectorsList].forEach((item) => {
+        item.classList.remove('selected')
+        item.classList.remove('animation-start-app')
       });
-    };
-  }();
-  var events = new function () {
-    this.toggleSelectedClass = function (listItem) {
+    }
+  }
+  const events = new function() {
+    this.toggleSelectedClass = (listItem) => {
       view.classReset(selectors.serviciosList);
-      var galleryName = listItem.getAttribute('class');
+      const galleryName = listItem.getAttribute('class');
       listItem.classList.add('selected');
       view.toggleGalleryOnSelected(galleryName);
-    };
-
-    this.goTo = function (e) {
+    }
+    this.goTo = (e) => {
       e.preventDefault();
-      var move = window.pageYOffset;
-      var container = {
+      let move = window.pageYOffset;
+      const container = {
         'trabajos': selectors.trabajosContainer,
         'historia': selectors.historiaContainer,
-        'contacto': selectors.contactoContainer
-      };
-      history.pushState(null, '', "#".concat(e.target.name));
-      var interval = setInterval(function () {
+        'contacto': selectors.contactoContainer, 
+      }
+      history.pushState(null, '', `#${e.target.name}`);  
+      const interval = setInterval(() => {
         if (move < container[e.target.name].offsetTop - 80) {
-          move >= container[e.target.name].offsetTop - 100 && clearInterval(interval);
-          move += 15;
+          move >= (container[e.target.name].offsetTop - 100) && clearInterval(interval);
+          move += 15
           window.scrollTo(0, move);
-        }
-
-        if (move > container[e.target.name].offsetTop - 80) {
-          move <= container[e.target.name].offsetTop - 100 && clearInterval(interval);
-          move -= 15;
+        } 
+        if (move > container[e.target.name].offsetTop - 80 ) {
+          move <= (container[e.target.name].offsetTop - 100 ) && clearInterval(interval);
+          move -= 15
           window.scrollTo(0, move);
-        }
-      }, 5);
-    };
-  }();
+        }  
+      },5);
+    }
+  }
   selectors.headerButton.addEventListener('click', events.goTo);
   selectors.navTrabajos.addEventListener('click', events.goTo);
   selectors.navHistoria.addEventListener('click', events.goTo);
   selectors.navContacto.addEventListener('click', events.goTo);
-  selectors.serviciosList.forEach(function (listItem) {
-    listItem.addEventListener('click', function () {
+  selectors.serviciosList.forEach((listItem) => {
+    listItem.addEventListener('click', function() {
       events.toggleSelectedClass(listItem);
-    });
-  });
+  })})
 };
 
-window.addEventListener('load', main);
+
+window.addEventListener('load',main);
